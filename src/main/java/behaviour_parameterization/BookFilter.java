@@ -1,24 +1,14 @@
 package behaviour_parameterization;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class BookFilter {
-
-    /**
-     * Dummy data for books
-     * */
-    private static List<Book> books = Arrays.asList(
-            new Book("demo 1", "abc"),
-            new Book("demo 2", "mno"),
-            new Book("demo 3", "mno"),
-            new Book("demo 4", "pqr")
-    );
+class BookFilter {
 
     /**
      * @param bookTestInterface Predicate of BookTestInterface interface {@link BookTestInterface#test(Book)}
      * */
-    private static void filterBooks(BookTestInterface bookTestInterface){
+    void filterBooks(List<Book> books, BookTestInterface bookTestInterface){
         for(Book book: books){
             if(bookTestInterface.test(book)){
                 System.out.println(book.getName());
@@ -27,10 +17,31 @@ public class BookFilter {
     }
 
     /**
-     * contains method filterBooks which shows implementation of
-     * lambda expression which overrides test() method of BookTestInterface
+     * Filtering with a predicate and method reference example
      * */
-    public static void main(String[] args) {
-        filterBooks((Book book) -> book.getAuthor().equals("pqr"));
+    List<Book> findAvailableBook(List<Book> books){
+        return books.stream()
+                .filter(Book::getIsAvailable)
+                .collect(Collectors.toList());
     }
+
+    /**
+     * truncating a stream using limit()
+     * */
+    List<Book> truncateBooks(List<Book> books){
+        return books.stream()
+                .filter(book -> !book.getIsAvailable())
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * skipping elements using skip(n) -> skips first n elements
+     * */
+    List<Book> skipBooks(List<Book> books){
+        return books.stream()
+                .skip(2)
+                .collect(Collectors.toList());
+    }
+
 }

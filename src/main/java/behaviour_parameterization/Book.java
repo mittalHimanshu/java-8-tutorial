@@ -17,4 +17,11 @@ class Book {
     String name;
     private @NotNull @Getter @Setter
     String author;
+    private @NotNull @Getter @Setter
+    Boolean isAvailable;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
