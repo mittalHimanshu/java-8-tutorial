@@ -2,6 +2,7 @@ package behaviour_parameterization;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 class BookFilter {
@@ -17,7 +18,7 @@ class BookFilter {
         }
     }
 
-    // Basic Stream Operations
+    /* ========== Filter =========== */
 
     /**
      * Filtering with a predicate and method reference example
@@ -27,6 +28,8 @@ class BookFilter {
                 .filter(Book::getIsAvailable)
                 .collect(Collectors.toList());
     }
+
+    /* ======== Slicing / Reducing ======= */
 
     /**
      * truncating a stream using limit()
@@ -47,6 +50,8 @@ class BookFilter {
                 .collect(Collectors.toList());
     }
 
+    /* ======= Mapping ======= */
+
     /**
      * Mapping
      * */
@@ -66,6 +71,21 @@ class BookFilter {
                 .flatMap(Arrays::stream)
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    /* ======== Matching ========= */
+
+    /**
+     * A predicate is passed as parameter in below three functions
+     *  allMatch() -> If each element satisfy the given condition
+     *  anyMatch() -> If any element matches the given condition
+     *  noneMatch() -> If none element matches the given condition, it return true
+     * */
+    void matchStream(List<Book> books){
+        Predicate<Book> p1 = Book::getIsAvailable;
+        System.out.println(books.stream().allMatch(p1));
+        System.out.println(books.stream().anyMatch(p1));
+        System.out.println(books.stream().noneMatch(p1));
     }
 
 

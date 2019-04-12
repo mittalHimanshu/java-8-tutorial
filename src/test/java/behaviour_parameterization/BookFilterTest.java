@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
@@ -60,4 +62,14 @@ public class BookFilterTest {
                 .forEach(System.out::println);
     }
 
+    @Test
+    public void flattenStream() {
+        new BookFilter().flattenStream(Stream.of("Hello", "World").collect(Collectors.toList()))
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void matchStream() {
+        new BookFilter().matchStream(books);
+    }
 }
