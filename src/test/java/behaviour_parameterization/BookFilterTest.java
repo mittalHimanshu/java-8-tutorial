@@ -72,4 +72,21 @@ public class BookFilterTest {
     public void matchStream() {
         new BookFilter().matchStream(books);
     }
+
+    @Test
+    public void collector() {
+        new BookFilter().collector(books)
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void grouping() {
+        System.out.println(new BookFilter().grouping(books));
+    }
+
+    @Test
+    public void partitioning() {
+        System.out.println(new BookFilter().partition(books));
+    }
+
 }

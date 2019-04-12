@@ -2,6 +2,7 @@ package behaviour_parameterization;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ class BookFilter {
                 .collect(Collectors.toList());
     }
 
-    /* ======== Slicing / Reducing ======= */
+    /* ======== Slicing ======= */
 
     /**
      * truncating a stream using limit()
@@ -70,7 +71,7 @@ class BookFilter {
                 .map(word -> word.split(""))
                 .flatMap(Arrays::stream)
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()); // -> Collector
     }
 
     /* ======== Matching ========= */
@@ -88,5 +89,31 @@ class BookFilter {
         System.out.println(books.stream().noneMatch(p1));
     }
 
+    /* ========= Collecting Data ========= */
+
+    /**
+     * Collectors
+     * */
+    List<String> collector(List<Book> books){
+        return books.stream()
+                .map(Book::getAuthor)
+                .collect(Collectors.toList());
+    }
+
+    /**
+    * Grouping
+    * */
+    Map<String, Long> grouping(List<Book> books){
+        return books.stream()
+                .collect(Collectors.groupingBy(Book::getAuthor, Collectors.counting()));
+    }
+
+    /**
+     * Partitioning
+     * */
+    Map<Boolean, List<Book>> partition(List<Book> books){
+        return books.stream()
+                .collect(Collectors.partitioningBy(Book::getIsAvailable));
+    }
 
 }
