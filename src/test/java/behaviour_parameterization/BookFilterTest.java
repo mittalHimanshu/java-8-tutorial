@@ -52,4 +52,11 @@ public class BookFilterTest {
         new BookFilter().skipBooks(books)
                 .forEach(System.out::println);
     }
+
+    @Test
+    public void mapBooks(){
+        new BookFilter().mapBooks(books)
+                .forEach(System.out::println);
+    }
+
 }

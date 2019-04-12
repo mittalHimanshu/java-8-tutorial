@@ -1,5 +1,6 @@
 package behaviour_parameterization;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,5 +44,27 @@ class BookFilter {
                 .skip(2)
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Mapping
+     * */
+    List<String> mapBooks(List<Book> books){
+        return books.stream()
+                .map(Book::getAuthor)
+                .collect(Collectors.toList());
+
+    }
+
+    /**
+     * Flat Map
+     **/
+    List<String> flattenStream(List<String> words){
+        return words.stream()
+                .map(word -> word.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
 
 }
