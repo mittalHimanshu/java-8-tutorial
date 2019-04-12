@@ -17,6 +17,8 @@ class BookFilter {
         }
     }
 
+    // Basic Stream Operations
+
     /**
      * Filtering with a predicate and method reference example
      * */
