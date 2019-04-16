@@ -89,4 +89,9 @@ public class BookFilterTest {
         System.out.println(new BookFilter().partition(books));
     }
 
+    @Test
+    public void reduceStream(){
+        System.out.println(new BookFilter().reduceStream(Stream.of(1, 2, 3, 4).collect(Collectors.toList())));
+    }
+
 }

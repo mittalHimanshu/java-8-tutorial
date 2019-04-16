@@ -74,6 +74,13 @@ class BookFilter {
                 .collect(Collectors.toList()); // -> Collector
     }
 
+    /* ======== Reducing ========= */
+
+    int reduceStream(List<Integer> nums){
+        return nums.stream()
+                .reduce(0, Integer::sum);
+    }
+
     /* ======== Matching ========= */
 
     /**
