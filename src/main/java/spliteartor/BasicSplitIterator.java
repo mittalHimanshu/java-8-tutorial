@@ -1,4 +1,4 @@
-package splititerator;
+package spliteartor;
 
 import java.util.ArrayList;
 import java.util.Spliterator;
