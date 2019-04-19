@@ -61,7 +61,7 @@ public class BasicSplitIterator {
             System.out.println("Output from splitr2: ");
             splitr2.forEachRemaining(System.out::println);
         }
-        
+
         System.out.println("Output from splitr1: ");
         splitr1.forEachRemaining(System.out::println);
 
