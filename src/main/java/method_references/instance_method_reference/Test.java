@@ -8,7 +8,7 @@ public class Test {
         System.out.println("Hie...this is instance method reference");
     }
 
-    public static void main(String[] args) {
+    public void testInstanceReference() {
         FunctionalInterface functionalInterface = new Test()::saySomething;
         functionalInterface.say();
     }

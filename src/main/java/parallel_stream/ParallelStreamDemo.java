@@ -1,11 +1,16 @@
 package parallel_stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParallelStreamDemo {
 
-    public static void main(String[] args) {
+    private Logger logger = LogManager.getLogger(ParallelStreamDemo.class);
+
+    public void testParallelStream() {
 
         long t1, t2;
         List<Employee> eList = new ArrayList<>();
@@ -24,22 +29,22 @@ public class ParallelStreamDemo {
 
         /***** Here We Are Creating A 'Sequential Stream' & Displaying The Result *****/
         t1 = System.currentTimeMillis();
-        System.out.println("Sequential Stream Count = " + eList.stream()
+        logger.info("Sequential Stream Count = " + eList.stream()
                 .filter(e -> e.getSalary() > 15000)
                 .count()
         );
 
         t2 = System.currentTimeMillis();
-        System.out.println("Sequential Stream Time Taken = " + (t2-t1) + "\n");
+        logger.info("Sequential Stream Time Taken = " + (t2-t1) + "\n");
 
         /***** Here We Are Creating A 'Parallel Stream' & Displaying The Result *****/
         t1 = System.currentTimeMillis();
-        System.out.println("Parallel Stream Count = " + eList.parallelStream()
+        logger.info("Parallel Stream Count = " + eList.parallelStream()
                 .filter(e -> e.getSalary() > 15000)
                 .count()
         );
 
         t2 = System.currentTimeMillis();
-        System.out.println("Parallel Stream Time Taken = " + (t2-t1));
+        logger.info("Parallel Stream Time Taken = " + (t2-t1));
     }
 }

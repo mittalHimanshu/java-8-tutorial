@@ -1,11 +1,15 @@
 package optional.implementation;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.util.Optional;
 
 
 public class MobileServiceTest {
+
+    private Logger logger = LogManager.getLogger(MobileServiceTest.class);
 
     @Test
     public void getMobileScreenWidth() {
@@ -17,11 +21,11 @@ public class MobileServiceTest {
         MobileService mService = new MobileService();
 
         int width = mService.getMobileScreenWidth(Optional.of(mobile));
-        System.out.println("Apple iPhone 6s Screen Width = " + width);
+        logger.info("Apple iPhone 6s Screen Width = " + width);
 
         Mobile mobile2 = new Mobile(2015001, "Apple", "iPhone 6s", Optional.empty());
         int width2 = mService.getMobileScreenWidth(Optional.of(mobile2));
-        System.out.println("Apple iPhone 16s Screen Width = " + width2);
+        logger.info("Apple iPhone 16s Screen Width = " + width2);
 
     }
 }

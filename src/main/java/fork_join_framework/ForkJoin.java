@@ -1,5 +1,9 @@
 package fork_join_framework;
 
+import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
@@ -11,6 +15,7 @@ public class ForkJoin extends RecursiveTask<Long> {
     private final int start;
     private final int end;
     private static final long threshold = 10_000;
+    private static Logger logger = LogManager.getLogger(ForkJoin.class);
 
     private ForkJoin(long[] numbers) {
         this(numbers, 0, numbers.length);
@@ -62,8 +67,8 @@ public class ForkJoin extends RecursiveTask<Long> {
         return new ForkJoinPool().invoke(task);
     }
 
-    public static void main(String[] args) {
-        System.out.println(ForkJoin.startForkJoinSum(100000));
+    static void testForkJoin() {
+        logger.info(ForkJoin.startForkJoinSum(100000));
     }
 
 }

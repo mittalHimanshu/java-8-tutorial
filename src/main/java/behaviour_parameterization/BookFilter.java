@@ -1,5 +1,7 @@
 package behaviour_parameterization;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -8,13 +10,15 @@ import java.util.stream.Collectors;
 
 class BookFilter {
 
+    private Logger logger = LogManager.getLogger(BookFilter.class);
+
     /**
      * @param bookTestInterface Predicate of BookTestInterface interface {@link BookTestInterface#test(Book)}
      * */
     void filterBooks(List<Book> books, BookTestInterface bookTestInterface){
         for(Book book: books){
             if(bookTestInterface.test(book)){
-                System.out.println(book.getName());
+                logger.info(book.getName());
             }
         }
     }
@@ -91,9 +95,9 @@ class BookFilter {
      * */
     void matchStream(List<Book> books){
         Predicate<Book> p1 = Book::getIsAvailable;
-        System.out.println(books.stream().allMatch(p1));
-        System.out.println(books.stream().anyMatch(p1));
-        System.out.println(books.stream().noneMatch(p1));
+        logger.info(books.stream().allMatch(p1));
+        logger.info(books.stream().anyMatch(p1));
+        logger.info(books.stream().noneMatch(p1));
     }
 
     /* ========= Collecting Data ========= */

@@ -1,5 +1,8 @@
 package behaviour_parameterization;
 
+import future.FutureDemoTest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +16,7 @@ import static org.junit.Assert.*;
 public class BookFilterTest {
 
     private List<Book> books;
+    private Logger logger = LogManager.getLogger(BookFilterTest.class);
 
     @Before
     public void setUp() {
@@ -41,31 +45,31 @@ public class BookFilterTest {
     @Test
     public void findAvailableBook() {
         new BookFilter().findAvailableBook(books)
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
     public void truncateBooks(){
         new BookFilter().truncateBooks(books)
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
     public void skipBooks() {
         new BookFilter().skipBooks(books)
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
     public void mapBooks(){
         new BookFilter().mapBooks(books)
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
     public void flattenStream() {
         new BookFilter().flattenStream(Stream.of("Hello", "World").collect(Collectors.toList()))
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
@@ -76,22 +80,22 @@ public class BookFilterTest {
     @Test
     public void collector() {
         new BookFilter().collector(books)
-                .forEach(System.out::println);
+                .forEach(logger::info);
     }
 
     @Test
     public void grouping() {
-        System.out.println(new BookFilter().grouping(books));
+        logger.info(new BookFilter().grouping(books));
     }
 
     @Test
     public void partitioning() {
-        System.out.println(new BookFilter().partition(books));
+        logger.info(new BookFilter().partition(books));
     }
 
     @Test
     public void reduceStream(){
-        System.out.println(new BookFilter().reduceStream(Stream.of(1, 2, 3, 4).collect(Collectors.toList())));
+        logger.info(new BookFilter().reduceStream(Stream.of(1, 2, 3, 4).collect(Collectors.toList())));
     }
 
 }

@@ -1,9 +1,14 @@
 package refactoring_with_lambdas.chain_of_responsibility;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class Test {
+
+    private Logger logger = LogManager.getLogger(Test.class);
 
     public void test(){
 
@@ -12,7 +17,7 @@ public class Test {
 
         Function<String, String> pipeline = firstProcess.andThen(secondProcess);
 
-        System.out.println(pipeline.apply("Himanshu"));
+        logger.info(pipeline.apply("Himanshu"));
 
     }
 

@@ -4,11 +4,11 @@ import method_references.static_method_reference.FunctionalInterface;
 
 public class Test {
 
-    private Test(){
+    public Test(){
         System.out.println("Hie...this is constructor method reference");
     }
 
-    public static void main(String[] args) {
+    static void testConstructorReference() {
         FunctionalInterface functionalInterface = Test::new;
         functionalInterface.say();
     }

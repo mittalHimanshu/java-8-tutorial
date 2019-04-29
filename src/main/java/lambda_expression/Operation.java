@@ -1,8 +1,14 @@
 package lambda_expression;
 
+import date_time.DateTime;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Operation {
 
-    public static void main(String[] args) {
+    private Logger logger = LogManager.getLogger(Operation.class);
+
+    public void doOperation() {
 
         // lambda expressions
 
@@ -11,17 +17,17 @@ public class Operation {
         MathInterface multiplication = (int a, int b) -> a * b;
         MathInterface division = (int a, int b) -> a / b;
 
-        System.out.println(addition.operate(10, 5));
-        System.out.println(subtraction.operate(10, 5));
-        System.out.println(multiplication.operate(10, 5));
-        System.out.println(division.operate(10, 5));
+        logger.info(addition.operate(10, 5));
+        logger.info(subtraction.operate(10, 5));
+        logger.info(multiplication.operate(10, 5));
+        logger.info(division.operate(10, 5));
 
 
         // lambda body
 
         MathInterface mathInterface = (int a, int b) -> {
-            System.out.println("First Number : " + a);
-            System.out.println("Second Number : " + b);
+            logger.info("First Number : " + a);
+            logger.info("Second Number : " + b);
             return 1;
         };
 

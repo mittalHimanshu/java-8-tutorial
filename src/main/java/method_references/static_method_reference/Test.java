@@ -6,7 +6,7 @@ public class Test {
         System.out.println("Hie...this is static method reference");
     }
 
-    public static void main(String[] args) {
+    public void testStaticReference() {
         FunctionalInterface functionalInterface = Test::saySomething;
         functionalInterface.say();
     }
