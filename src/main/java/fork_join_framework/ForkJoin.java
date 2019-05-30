@@ -1,6 +1,5 @@
 package fork_join_framework;
 
-import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
